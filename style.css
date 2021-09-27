@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Be+Vietnam:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+
+html, body {
+  box-sizing: border-box;
+  text-decoration: none;
+  overflow: hidden;
+  font-family: 'Be Vietnam','Montserrat','Poppins', sans-serif;
+}
+audio{
+  z-index: 10;
+  display:block;
+  position: absolute;
+}
+
+/*Background*/
+.background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  height: 130vh;
+  position: absolute; /*fixed*/
+  width: 100%;
+  transform: translateY(30vh);
+  transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.background:before {
+  content: "";
+  position: absolute; /*relative*/
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.background:first-child {
+  background-image: url(https://images.wallpaperscraft.com/image/single/landscape_art_road_127350_3840x2160.jpg);
+  transform: translateY(-15vh);
+}
+.background:first-child .content-wrapper {
+  transform: translateY(15vh);
+}
+.background:nth-child(2) {
+  background-image: url(https://images.wallpaperscraft.com/image/single/landscape_art_moon_127187_1920x1080.jpg);
+}
+.background:nth-child(3) {
+  background-image: url(https://images.wallpaperscraft.com/image/single/mountains_valley_houses_192902_1920x1200.jpg);
+}
+.background:nth-child(4) {
+  background-image: url(https://images.wallpaperscraft.com/image/single/landscape_lights_glare_147246_1600x1200.jpg);
+}
+.background:nth-child(5) {
+  background-image: url(https://images.wallpaperscraft.com/image/single/landscape_art_trees_132641_1920x1080.jpg);
+}
+
+/* Set stacking context of slides */
+.background:nth-child(1) {
+  z-index: 5;
+}
+
+.background:nth-child(2) {
+  z-index: 4;
+}
+
+.background:nth-child(3) {
+  z-index: 3;
+}
+
+.background:nth-child(4) {
+  z-index: 2;
+}
+
+.background:nth-child(5) {
+  z-index: 1;
+}
+
+.content-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-flow: column nowrap;
+  color: #fff;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  transform: translateY(40vh);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.content-title {
+  font-size: 12vh;
+  line-height: 1.4;
+}
+.content-text{
+  text-transform: none;
+  text-align: none;
+  line-height:25px;
+}
+
+
+.background.up-scroll {
+  transform: translate3d(0, -15vh, 0);
+}
+.background.up-scroll .content-wrapper {
+  transform: translateY(15vh);
+}
+.background.up-scroll + .background {
+  transform: translate3d(0, 30vh, 0);
+}
+.background.up-scroll + .background .content-wrapper {
+  transform: translateY(30vh);
+}
+
+.background.down-scroll {
+  transform: translate3d(0, -130vh, 0);
+}
+.background.down-scroll .content-wrapper {
+  transform: translateY(40vh);
+}
+.background.down-scroll + .background:not(.down-scroll) {
+  transform: translate3d(0, -15vh, 0);
+}
+.background.down-scroll + .background:not(.down-scroll) .content-wrapper {
+  transform: translateY(15vh);
+}
+
+
+.logo{
+  color: #222;
+  font-weight: 400;
+  font-size: 32px;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: absolute;
+  z-index: 10;
+  top: 50px;
+  left: 50px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #222;
+}
+.logo:hover{
+  text-shadow: 0 0 10px #ffffffab,
+  0 0 20px #ffffff9d,
+  0 0 40px #ffffff7c;
+  
+}
+.logo i{
+  font-size: 38px;
+}
+
+
+/*Text swap*/
+
+
+#content-wap {
+    width: auto;
+    text-transform: uppercase;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top : 25%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    line-height: 40px;
+    overflow: hidden
+}
+#content-wap .visible {
+    font-weight: 700;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 40px
+}
+#content-wap .visible:before {
+    content: '[';
+    left: 0;
+    line-height: 40px
+}
+#content-wap .visible:after {
+    content: ']';
+    position: absolute;
+    right: 0;
+    line-height: 40px
+}
+#content-wap .visible:after,
+#content-wap .visible:before {
+    position: absolute;
+    top: -5px;
+    color: rgba(0, 0, 0, 0.1);
+    font-size: 42px;
+    -webkit-animation: 2s linear 0s normal none infinite opacity;
+    animation: 2s linear 0s normal none infinite opacity
+}
+#content-wap p {
+  font-weight: 400;
+  display: inline;
+  float: left;
+  margin: 0;
+  color: #fff;
+}
+#content-wap ul {
+    margin-top: 0;
+    padding-left: 150px;
+    text-align: left;
+    list-style: none;
+    -webkit-animation: 15s linear 1s normal none infinite change;
+    animation: 15s linear 1s normal none infinite change
+}
+#content-wap ul li {
+  line-height: 40px;
+  margin: 0;
+  list-style-type:none;
+  padding:0;
+  color:#fff;
+}
+@-webkit-keyframes opacity {
+    0%, 100% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1
+    }
+}
+@keyframes opacity {
+    0%, 100% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1
+    }
+}
+@-webkit-keyframes change {
+    0%, 12%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+    17%,
+    29% {
+        -webkit-transform: translateY(-25%);
+        transform: translateY(-25%)
+    }
+    34%,
+    46% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    51%,
+    63% {
+        -webkit-transform: translateY(-75%);
+        transform: translateY(-75%)
+    }
+    68%,
+    80% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    85%,
+    97% {
+        -webkit-transform: translateY(-25%);
+        transform: translateY(-25%)
+    }
+}
+@keyframes change {
+    0%, 12%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+    17%,
+    29% {
+        -webkit-transform: translateY(-25%);
+        transform: translateY(-25%)
+    }
+    34%,
+    46% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    51%,
+    63% {
+        -webkit-transform: translateY(-75%);
+        transform: translateY(-75%)
+    }
+    68%,
+    80% {
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }
+    85%,
+    97% {
+        -webkit-transform: translateY(-25%);
+        transform: translateY(-25%)
+    }
+}
+@media screen and (max-width: 800px) {
+    #content-wap {
+        display: none
+    }
+}
+
+/*end Text swap */
+
+/*Social*/
+.social-btns .btn,
+.social-btns .btn:before,
+.social-btns .btn .fa {
+  transition: all 0.35s;
+  transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+.social-btns .btn:before {
+  top: 90%;
+  left: -110%;
+}
+.social-btns .btn .fa {
+  transform: scale(0.8);
+}
+.social-btns .btn.facebook:before {
+  background-color: #3b5998;
+}
+
+.social-btns .btn.facebook:hover {
+  box-shadow: 0 0 10px #3b5998, 
+  0 0 20px #3b5998e8, 
+  0 0 40px #3b5998a8 ,
+  0 0 80px #3b59986c;
+}
+
+.social-btns .btn.facebook .fa {
+  color: #3b5998;
+}
+.social-btns .btn.twitter:before {
+  background-color: #33ccff;
+}
+
+.social-btns .btn.twitter:hover {
+  box-shadow: 0 0 10px #33ccff, 
+  0 0 20px #33ccffe8, 
+  0 0 40px #33ccffa8 ,
+  0 0 80px #33ccff6c;
+}
+.social-btns .btn.twitter .fa {
+  color: #3cf;
+}
+.social-btns .btn.google:before {
+  background-color: #dc4a38;
+}
+
+.social-btns .btn.google:hover {
+  box-shadow: 0 0 10px #dc4a38, 
+  0 0 20px #dc4a38e8, 
+  0 0 40px #dc4a38a8 ,
+  0 0 80px #dc4a386c;
+}
+
+.social-btns .btn.google .fa {
+  color: #dc4a38;
+}
+.social-btns .btn.dribbble:before {
+  background-color: #f26798;
+}
+.social-btns .btn.dribbble .fa {
+  color: #f26798;
+}
+
+
+.social-btns .btn.dribbble:hover {
+  box-shadow: 0 0 10px #f26798, 
+  0 0 20px #f26798e8, 
+  0 0 40px #f26798a8 ,
+  0 0 80px #f267986c;
+}
+
+
+.social-btns .btn.linkedin:before {
+  background-color: #0a66c2;
+}
+.social-btns .btnlinkedin .fa {
+  color: #0a66c2;
+}
+
+.social-btns .btn.linkedin:hover {
+  box-shadow: 0 0 10px #0a66c2, 
+  0 0 20px #0a66c2e8, 
+  0 0 40px #0a66c2a8 ,
+  0 0 80px #0a66c26c;
+}
+
+.social-btns .btn.skype:before {
+  background-color: #00aff0;
+}
+
+.social-btns .btn.skype:hover {
+  box-shadow: 0 0 10px #00aff0, 
+  0 0 20px #00aff0e8, 
+  0 0 40px #00aff0a8 ,
+  0 0 80px #00aff06c;
+}
+
+.social-btns .btn.skype .fa {
+  color: #00aff0;
+}
+.social-btns .btn:focus:before,
+.social-btns .btn:hover:before {
+  top: -10%;
+  left: -10%;
+}
+.social-btns .btn:focus .fa,
+.social-btns .btn:hover .fa {
+  color: #fff;
+  transform: scale(1);
+}
+.social-btns {
+  width: 100%;
+  height: 50px;
+  margin: 10px 10px;
+  font-size: 0;
+  align-items: center;
+  text-align: center;
+}
+.social-btns .btn {
+  display: inline-block;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 10px 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28%;
+  box-shadow: 0 5px 15px -5px rgba(0,0,0,0.1);
+  opacity: 1;
+}
+.social-btns .btn:before {
+  content: '';
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.social-btns .btn .fa {
+  font-size: 38px;
+  vertical-align: middle;
+}
+
+/*End Social*/
